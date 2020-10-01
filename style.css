@@ -16,7 +16,14 @@
 
 .header__logo {
     padding-bottom: 40px;
+    color: #FFF;
+    fill: #FFF;
 }
+
+/* .header__logo:hover {
+  color: #000;
+  fill: #000;
+} */
 
 .profile {
     padding-top: 40px;
@@ -46,7 +53,6 @@
 
 .profile__info-wrapper {
     display: flex;
-    /* align-items: flex-end; */
     margin-top: 18px;
     align-content: flex-end;
     align-items: baseline
@@ -83,13 +89,21 @@
 
 .profile__edit-button:hover {
   cursor: pointer;
+  border: 1px solid rgba(255,255,255, 0.6);
 }
 
 .profile__edit-image {
   padding: 7px;
-  width: 100%;
-  box-sizing: border-box;
+  /* width: 100%;
+  box-sizing: border-box; */
   display: block;
+  color: #FFF;
+  fill: #FFF;
+}
+
+.profile__edit-image:hover {
+  color: rgba(255,255,255, 0.6);
+  fill: rgba(255,255,255, 0.6);
 }
 
 .profile__add-button {
@@ -105,10 +119,17 @@
 }
 
 .profile__add-image {
-  box-sizing: border-box;
-  width: 100%;
+  /* box-sizing: border-box; */
+  /* width: 100%; */
   padding: 14px 64px;
   display: block;
+  color: #FFF;
+  fill: #FFF;
+}
+
+.profile__add-image:hover {
+  color: rgba(255,255,255, 0.6);
+  fill: rgba(255,255,255, 0.6);
 }
 
 .elements {
@@ -204,10 +225,13 @@
   position: absolute;
   top: -45px;
   right: -45px;
+  color: #FFF;
+  fill: #FFF;
 }
 
 .popup__close:hover {
-  background: rgba(255, 255, 255, 0.6);
+  color: rgba(255,255,255, 0.6);
+  fill: rgba(255,255,255, 0.6);
   cursor: pointer;
 }
 
