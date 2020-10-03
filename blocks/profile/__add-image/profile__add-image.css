@@ -1,0 +1,22 @@
+.profile__add-image {
+  width: 22px;
+  height: 22px;
+  padding: 14px 64px;
+  margin: 0 auto;
+  display: block;
+  color: #FFF;
+  fill: #FFF;
+}
+  
+@media screen and (max-width: 525px) {
+  .profile__add-image {
+    width: 16px;
+    height: 16px;
+    }
+}
+
+.profile__add-image:hover {
+  color: rgba(255,255,255, 0.6);
+  fill: rgba(255,255,255, 0.6);
+}
+  

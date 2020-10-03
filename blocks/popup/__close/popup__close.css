@@ -1,0 +1,21 @@
+.popup__close {
+  position: absolute;
+  max-width: 40px;
+  top: -30px;
+  right: -30px;
+  color: #FFF;
+  fill: #FFF;
+}
+  
+@media screen and (max-width: 920px) {
+  .popup__close {
+    max-width: 26px;
+    right: 0;
+  }
+}
+  
+.popup__close:hover {
+  color: rgba(255,255,255, 0.6);
+  fill: rgba(255,255,255, 0.6);
+  cursor: pointer;
+}

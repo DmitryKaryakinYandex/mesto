@@ -1,0 +1,19 @@
+.profile__edit-image {
+  padding: 7px;
+  display: block;
+  color: #FFF;
+  fill: #FFF;
+}
+  
+@media screen and (max-width: 525px) {
+  .profile__edit-image {
+    padding: 5.25px;
+    max-width: 7.5px;
+    max-height: 7.5px;
+    }
+}
+  
+.profile__edit-image:hover {
+  color: rgba(255,255,255, 0.6);
+  fill: rgba(255,255,255, 0.6);
+}

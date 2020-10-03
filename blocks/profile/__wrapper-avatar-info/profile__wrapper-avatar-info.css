@@ -1,0 +1,17 @@
+.profile__wrapper-avatar-info {
+  display: flex;
+}
+
+@media screen and (max-width: 720px) {
+  .profile__wrapper-avatar-info {
+    justify-content: center;
+    padding-bottom: 36px;
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .profile__wrapper-avatar-info {
+    flex-direction: column;
+    align-items: center;
+  }
+}
