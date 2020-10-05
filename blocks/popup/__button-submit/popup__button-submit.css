@@ -11,6 +11,7 @@
   text-align: center;
   color: #FFFFFF;
   text-align: center;
+  transition: opacity 1.2s ease;
 }
   
 @media screen and (max-width: 920px) {
@@ -23,6 +24,6 @@
   
 .popup__button-submit:hover {
   cursor: pointer;
-  background: rgba(0, 0, 0, 0.8);
+  opacity: 0.8;
 }
   

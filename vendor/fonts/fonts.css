@@ -10,20 +10,20 @@
 
 @font-face {
   src:
-    url('./Inter-3.15/Inter Web/Inter-Regular.woff') format('woff'),
-    url('./Inter-3.15/Inter Web/Inter-Regular.woff2') format('woff2'),
-    url('./Inter-3.15/Inter Desktop/Inter-Regular.otf') format('otf'),
-    url('./Inter-3.15/Inter Hinted for Windows/Desktop/Inter-Regular.ttf') format('truetype');
+    url('./Inter-3.15/Inter Web/Inter-Medium.woff') format('woff'),
+    url('./Inter-3.15/Inter Web/Inter-Medium.woff2') format('woff2'),
+    url('./Inter-3.15/Inter Desktop/Inter-Medium.otf') format('otf'),
+    url('./Inter-3.15/Inter Hinted for Windows/Desktop/Inter-Medium.ttf') format('truetype');
   font-family: 'Inter';
   font-weight: 500;
 }
 
 @font-face {
   src:
-    url('./Inter-3.15/Inter Web/Inter-Light.woff') format('woff'),
-    url('./Inter-3.15/Inter Web/Inter-Light.woff2') format('woff2'),
-    url('./Inter-3.15/Inter Desktop/Inter-Light.otf') format('otf'),
-    url('./Inter-3.15/Inter Hinted for Windows/Desktop/Inter-Light.ttf') format('truetype');
+    url('./Inter-3.15/Inter Web/Inter-Regular.woff') format('woff'),
+    url('./Inter-3.15/Inter Web/Inter-Regular.woff2') format('woff2'),
+    url('./Inter-3.15/Inter Desktop/Inter-Regular.otf') format('otf'),
+    url('./Inter-3.15/Inter Hinted for Windows/Desktop/Inter-Regular.ttf') format('truetype');
   font-family: 'Inter';
   font-weight: 400;
 }

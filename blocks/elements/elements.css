@@ -1,4 +1,5 @@
 .elements {
+  font-family: 'Inter', Arial, sans-serif;
   max-width: 882px;
   padding-top: 51px;
   margin: 0 auto; 
@@ -11,18 +12,17 @@
   .elements {
     width: calc(100% - (19px*2));
     grid-template-columns: repeat(2, 1fr);
-    }
+  }
 }
 
 @media screen and (max-width: 640px) {
   .elements {
     grid-template-columns: repeat(1, 1fr);
-    }
+  }
 }
 
 @media screen and (max-width: 320px) {
   .elements {
     column-gap: 0;
-    grid-template-columns: repeat(1, 1fr);
-    }
+  }
 }
