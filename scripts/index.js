@@ -24,7 +24,7 @@ function formSubmitHandler (evt) {
  evt.preventDefault(); 
  nameReadet.textContent = nameInput.value;
  jobReadet.textContent = jobInput.value;
- popupToggle();
+ popupToggleClose();
 }
 
 formElement.addEventListener('submit', formSubmitHandler); 
