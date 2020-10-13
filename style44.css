@@ -1,0 +1,122 @@
+.popup-add {
+    font-family: 'Inter', Arial, sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0, 0.5);
+  }
+
+  .popup-add__container {
+    max-width: 430px;
+    width: 100%;
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 34px 36px;
+  }
+    
+  @media screen and (max-width: 920px) {
+    .popup-add__container {
+      max-width: 282px;
+      padding: 25px 22px;
+    }
+  }
+
+  .popup-add__close {
+    min-width: 41px;
+    min-height: 41px;
+    background: transparent;
+    background-image: url(../../../images/popup__close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    position: absolute;
+    top: -35px;
+    right: -35px;
+    transition: opacity 1.2s ease;
+  }
+    
+  @media screen and (max-width: 920px) {
+    .popup__close-add {
+      min-width: 26px;
+      min-height: 26px;
+      right: 0;
+    }
+  }
+    
+  .popup-add__close:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  .popup-add__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .popup-add__title {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 24px;
+  }
+
+  .popup-add__text {
+    margin-top: 30px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.21;
+    color: #000000;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, 0.2);
+    padding-bottom: 13px;
+  }
+
+  .popup-add__text_type_link {
+}
+
+.popup-add__text_type_name {
+}
+
+.popup-add__button-submit {
+    margin-top: 48px;
+    background: #000000;
+    border-radius: 2px;
+    padding: 14px 125px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 1.22;
+    text-align: center;
+    color: #FFFFFF;
+    text-align: center;
+    transition: opacity 1.2s ease;
+  }
+    
+  @media screen and (max-width: 920px) {
+    .popup-add__button-submit {
+      font-size: 14px;
+      line-height: 1.22;
+      padding: 14px 82px;
+    }
+  }
+    
+  .popup-add__button-submit:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+
+  .popup-add_opened {
+    display: flex;
+  }
