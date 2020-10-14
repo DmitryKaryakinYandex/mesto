@@ -12,6 +12,7 @@ const elementsList = document.querySelector('.elements');
 const formElementAdd = document.querySelector('.popup-add__container');
 const stackName = document.querySelector('.popup-add__text_type_name');
 const stackLink = document.querySelector('.popup-add__text_type_link');
+const template = document.querySelector('.template');
 
 const buttonOpenPopupAdd = document.querySelector(".profile__add-button");
 const buttonClosePopupAdd = document.querySelector(".popup-add__close");
@@ -29,11 +30,17 @@ const popupAddToggleClose = () => {
   buttonClosePopupAdd.addEventListener("click", popupAddToggleClose);
 
 const getElement = (element) => {
-    const elementTemplate = document.querySelector('.template').content.cloneNode(true);
+    // const elementTemplate = document.querySelector('.template').content.cloneNode(true);
+    const elementTemplate = template.content.cloneNode(true);
     elementTemplate.querySelector('.elements__text').innerText = element.name;
     elementTemplate.querySelector('.elements__image').setAttribute('src',element.link);
     elementTemplate.querySelector('.elements__image').setAttribute('alt',element.name);
 
+    const buttonRemove = elementTemplate.querySelector('.elements__remove');
+    buttonRemove.addEventListener("click", function removeElementList(evt){
+      evt.target.closest('.elements__element').remove();
+    });
+    
     return elementTemplate;
 };
 
@@ -58,3 +65,10 @@ const addElementList = (evt) => {
 formElementAdd.addEventListener('submit', addElementList);
 
 renderList();
+
+// const removeElementList = (evt) => {
+//   evt.target.closest('.elements__element').remove();
+// }
+
+
+
