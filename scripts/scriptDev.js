@@ -15,6 +15,8 @@ const stackLink = document.querySelector('.popup-add__text_type_link');
 const template = document.querySelector('.template');
 const popupImage = document.querySelector('.popup-images');
 const buttonClosePopupImage = document.querySelector('.popup-images__close');
+const popupImagesItem = document.querySelector('.popop-images__item');
+const popupImagesText = document.querySelector('.popop-images__text');
 
 const buttonOpenPopupAdd = document.querySelector(".profile__add-button");
 const buttonClosePopupAdd = document.querySelector(".popup-add__close");
@@ -50,6 +52,8 @@ const getElement = (element) => {
 
     const popupImages = () => {
       popupImage.classList.toggle('popup-images_opened');
+      popupImagesItem.setAttribute('src', element.link);
+      popupImagesText.innerText = element.name;
     }
 
     const elementTemplateImage = elementTemplate.querySelector('.elements__image');

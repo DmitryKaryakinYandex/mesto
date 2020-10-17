@@ -4,6 +4,4 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  object-fit: contain;
-  object-position: top;
 }  
