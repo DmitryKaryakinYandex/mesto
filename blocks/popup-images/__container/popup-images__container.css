@@ -1,0 +1,7 @@
+.popup-images__container {
+  max-height: 75vh;
+  max-width: 75vw;
+  position: relative;
+  background: transparent;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+}
