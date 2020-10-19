@@ -95,8 +95,8 @@ const getElement = (element) => {
 };
 
 const renderList = () => {
-  const items = initialCards.map(getElement);
-  elementsList.append(...items);
+ const items = initialCards.map(getElement);
+ elementsList.append(...items);
 };
 
 const addElementList = (evt) => {
