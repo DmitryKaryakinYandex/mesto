@@ -6,7 +6,7 @@
   display: grid;
   gap: 21px 18px;
   grid-template-columns: repeat(3, 1fr);
-  }
+}
 
 @media screen and (max-width: 920px) {
   .elements {

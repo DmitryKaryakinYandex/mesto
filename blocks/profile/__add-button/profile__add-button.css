@@ -9,14 +9,13 @@
   background-repeat: no-repeat;
   background-position: center;
   transition: opacity 1.2s ease;
-
 }
   
 @media screen and (max-width: 720px) {
   .profile__add-button {
     max-width: 100%;
     width: 100%;
-    }
+  }
 }
   
 .profile__add-button:hover {

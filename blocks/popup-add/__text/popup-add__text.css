@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 525px) {
-   .popup-add__text {
+  .popup-add__text {
     font-size: 12px;
     margin-top: 20px;
   }
