@@ -3,115 +3,140 @@ const buttonClosePopup = document.querySelector(".popup__close");
 const profilePopup = document.querySelector(".popup");
 const nameInput = profilePopup.querySelector(".popup__text_type_name");
 const jobInput = profilePopup.querySelector(".popup__text_type_job");
-const nameReadet = document.querySelector(".profile__title"); 
+const nameReadet = document.querySelector(".profile__title");
 const jobReadet = document.querySelector(".profile__subtitle");
 const formElement = profilePopup.querySelector(".popup__container");
 
-const closePopupToggle = () => {
- profilePopup.classList.toggle("popup_opened");
+const closePopup = () => {
+  profilePopup.classList.toggle("popup_opened");
 };
 
-const openPopupToggle = () => {
- profilePopup.classList.toggle("popup_opened");
- nameInput.value = nameReadet.textContent;
- jobInput.value = jobReadet.textContent;
+const openPopup = () => {
+  profilePopup.classList.toggle("popup_opened");
+  nameInput.value = nameReadet.textContent;
+  jobInput.value = jobReadet.textContent;
 };
 
-buttonOpenPopup.addEventListener("click", openPopupToggle);
-buttonClosePopup.addEventListener("click", closePopupToggle);
+buttonOpenPopup.addEventListener("click", openPopup);
+buttonClosePopup.addEventListener("click", closePopup);
 
-function handleFormSubmit (evt) {
- evt.preventDefault(); 
- nameReadet.textContent = nameInput.value;
- jobReadet.textContent = jobInput.value;
- closePopupToggle();
+function handleFormSubmit(evt) {
+  evt.preventDefault();
+  nameReadet.textContent = nameInput.value;
+  jobReadet.textContent = jobInput.value;
+  closePopup();
 }
 
-formElement.addEventListener('submit', handleFormSubmit); 
+formElement.addEventListener("submit", handleFormSubmit);
 
 const initialCards = [
- { name: 'Крым', link: 'https://images.unsplash.com/photo-1599758417353-3b66f35e5d79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80'},
- { name: 'Алтай', link: 'https://images.unsplash.com/photo-1598394188724-cdeb618eb4e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=708&q=80'},
- { name: 'Карелия', link: 'https://images.unsplash.com/photo-1573156667788-3b0a869a97b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80'},
- { name: 'Санкт-Петербург', link: 'https://images.unsplash.com/photo-1597533849860-5a04a21a7b3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80'},
- { name: 'Дагестан',link: 'https://images.unsplash.com/photo-1591635765226-a7e6533655d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=649&q=80'},
- { name: 'Байкал', link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'}
-]; 
+  {
+    name: "Крым",
+    link:
+      "https://images.unsplash.com/photo-1599758417353-3b66f35e5d79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80",
+  },
+  {
+    name: "Алтай",
+    link:
+      "https://images.unsplash.com/photo-1598394188724-cdeb618eb4e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=708&q=80",
+  },
+  {
+    name: "Карелия",
+    link:
+      "https://images.unsplash.com/photo-1573156667788-3b0a869a97b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80",
+  },
+  {
+    name: "Санкт-Петербург",
+    link:
+      "https://images.unsplash.com/photo-1597533849860-5a04a21a7b3b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+  },
+  {
+    name: "Дагестан",
+    link:
+      "https://images.unsplash.com/photo-1591635765226-a7e6533655d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=649&q=80",
+  },
+  {
+    name: "Байкал",
+    link:
+      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+  },
+];
 
-
-const elementsList = document.querySelector('.elements');
-const formElementAdd = document.querySelector('.popup-add__container');
-const stackName = document.querySelector('.popup-add__text_type_name');
-const stackLink = document.querySelector('.popup-add__text_type_link');
-const template = document.querySelector('.template');
-const popupImage = document.querySelector('.popup-images');
-const buttonClosePopupImage = document.querySelector('.popup-images__close');
-const popupImagesItem = document.querySelector('.popop-images__item');
-const popupImagesText = document.querySelector('.popop-images__text');
+const elementsList = document.querySelector(".elements");
+const formElementAdd = document.querySelector(".popup-add__container");
+const stackName = document.querySelector(".popup-add__text_type_name");
+const stackLink = document.querySelector(".popup-add__text_type_link");
+const template = document.querySelector(".template");
+const popupImage = document.querySelector(".popup-images");
+const buttonClosePopupImage = document.querySelector(".popup-images__close");
+const popupImagesItem = document.querySelector(".popop-images__item");
+const popupImagesText = document.querySelector(".popop-images__text");
 const buttonOpenPopupAdd = document.querySelector(".profile__add-button");
 const buttonClosePopupAdd = document.querySelector(".popup-add__close");
 const popupAdd = document.querySelector(".popup-add");
 
-const closePopupAddToggle = () => {
- popupAdd.classList.toggle("popup-add_opened");
- stackName.value='';
- stackLink.value='';
+const closePopupAdd = () => {
+  popupAdd.classList.toggle("popup-add_opened");
+  stackName.value = "";
+  stackLink.value = "";
 };
-  
-const popupAddToggleOpen = () => {
- popupAdd.classList.toggle("popup-add_opened");
+
+const openPopupAdd = () => {
+  popupAdd.classList.toggle("popup-add_opened");
 };
-  
-buttonOpenPopupAdd.addEventListener("click", popupAddToggleOpen);
-buttonClosePopupAdd.addEventListener("click", closePopupAddToggle);
+
+buttonOpenPopupAdd.addEventListener("click", openPopupAdd);
+buttonClosePopupAdd.addEventListener("click", closePopupAdd);
 
 const getElement = (element) => {
- const elementTemplate = template.content.cloneNode(true);
- const elementTemplateImage = elementTemplate.querySelector('.elements__image');
+  const elementTemplate = template.content.cloneNode(true);
+  const elementTemplateImage = elementTemplate.querySelector(
+    ".elements__image"
+  );
 
- elementTemplate.querySelector('.elements__text').innerText = element.name;
- elementTemplateImage.setAttribute('src',element.link);
- elementTemplateImage.setAttribute('alt',element.name);
-    
- const buttonTouchLike = elementTemplate.querySelector('.elements__like');
- buttonTouchLike.addEventListener("click", function (evt) {
-  evt.target.classList.toggle("elements__like_active");
+  elementTemplate.querySelector(".elements__text").innerText = element.name;
+  elementTemplateImage.setAttribute("src", element.link);
+  elementTemplateImage.setAttribute("alt", element.name);
+
+  const buttonTouchLike = elementTemplate.querySelector(".elements__like");
+  buttonTouchLike.addEventListener("click", function (evt) {
+    evt.target.classList.toggle("elements__like_active");
   });
 
- const buttonRemove = elementTemplate.querySelector('.elements__remove');
- buttonRemove.addEventListener("click", function removeElementList(evt){
-  evt.target.closest('.elements__element').remove();
+  const buttonRemove = elementTemplate.querySelector(".elements__remove");
+  buttonRemove.addEventListener("click", function removeElementList(evt) {
+    evt.target.closest(".elements__element").remove();
   });
 
- const handlePopupImages = () => {
-  popupImage.classList.toggle('popup-images_opened');
-  popupImagesItem.setAttribute('src', element.link);
-  popupImagesText.innerText = element.name;
+  const handlePopupImages = () => {
+    popupImage.classList.toggle("popup-images_opened");
+    popupImagesItem.setAttribute("src", element.link);
+    popupImagesText.innerText = element.name;
   };
 
- elementTemplateImage.addEventListener("click", handlePopupImages);
-    
- return elementTemplate;
+  elementTemplateImage.addEventListener("click", handlePopupImages);
+
+  return elementTemplate;
 };
 
 const renderList = () => {
- const items = initialCards.map(getElement);
- elementsList.append(...items);
+  const items = initialCards.map(getElement);
+  elementsList.append(...items);
 };
 
 const addElementList = (evt) => {
- evt.preventDefault(); 
- const stack = getElement({name: stackName.value, link: stackLink.value});
- elementsList.prepend(stack);
- closePopupAddToggle();
+  evt.preventDefault();
+  const stack = getElement({ name: stackName.value, link: stackLink.value });
+  elementsList.prepend(stack);
+  closePopupAdd();
 };
 
-formElementAdd.addEventListener('submit', addElementList);
+formElementAdd.addEventListener("submit", addElementList);
 
 renderList();
 
-const closePopupImageToggle = () => {                                          
- popupImage.classList.toggle("popup-images_opened");
+const closePopupImage = () => {
+  popupImage.classList.toggle("popup-images_opened");
 };
 
-buttonClosePopupImage.addEventListener("click", closePopupImageToggle);
+buttonClosePopupImage.addEventListener("click", closePopupImage);
