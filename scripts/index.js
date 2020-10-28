@@ -1,18 +1,30 @@
 const buttonOpenPopup = document.querySelector(".profile__edit-button");
-const buttonClosePopup = document.querySelector(".popup__close");
-const profilePopup = document.querySelector(".popup");
-const nameInput = profilePopup.querySelector(".popup__text_type_name");
-const jobInput = profilePopup.querySelector(".popup__text_type_job");
+const buttonClosePopup = document.querySelector(".popup-profile__close");
+const profilePopup = document.querySelector(".popup-profile");
+const nameInput = profilePopup.querySelector(".popup-profile__text_type_name");
+const jobInput = profilePopup.querySelector(".popup-profile__text_type_job");
 const nameReadet = document.querySelector(".profile__title");
 const jobReadet = document.querySelector(".profile__subtitle");
-const formElement = profilePopup.querySelector(".popup__container");
+const formElement = profilePopup.querySelector(".popup-profile__container");
 const profileErrorName = profilePopup.querySelector("#name-card-error");
 const profileErrorJob = profilePopup.querySelector("#job-card-error");
-const profileErrorButton = profilePopup.querySelector(".popup__button-submit");
+const profileErrorButton = profilePopup.querySelector(".popup-profile__button-submit");
 
-const closePopup = () => {
-  profilePopup.classList.toggle("popup_opened");
+const closePopup = (popupBlock) => {
+  popupBlock.classList.remove("popup_opened");
+  /* код удаления обработчика Esc */
 };
+
+// const closePopupS = () => {
+//   profilePopup.classList.toggle("popup_opened");
+// };
+
+// const closePopup = (popup) => {
+//   popup.classList.remove('popup_opened');
+//   /* код удаления обработчика Esc */
+// } 
+
+// () => someFunk(param)
 
 const openPopup = () => {
   profilePopup.classList.toggle("popup_opened");
@@ -31,13 +43,13 @@ const openPopup = () => {
 };
 
 buttonOpenPopup.addEventListener("click", openPopup);
-buttonClosePopup.addEventListener("click", closePopup);
+buttonClosePopup.addEventListener("click", () => closePopup(profilePopup));
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
   nameReadet.textContent = nameInput.value;
   jobReadet.textContent = jobInput.value;
-  closePopup();
+  closePopup(profilePopup);                                                                   ///////////???
 }
 
 formElement.addEventListener("submit", handleFormSubmit);
@@ -91,12 +103,12 @@ const placeErrorName = popupAdd.querySelector("#name-place-error");
 const placeErrorLink = popupAdd.querySelector("#link-place-error");
 const placeErrorButton = popupAdd.querySelector(".popup-add__button-submit");
 
-const closePopupAdd = () => {
-  popupAdd.classList.toggle("popup-add_opened");
-};
+// const closePopupAdd = () => {
+//   popupAdd.classList.toggle("popup_opened");
+// };
 
 const openPopupAdd = () => {
-  popupAdd.classList.toggle("popup-add_opened");
+  popupAdd.classList.toggle("popup_opened");
   stackName.value = "";
   stackLink.value = "";
 
@@ -112,13 +124,11 @@ const openPopupAdd = () => {
 };
 
 buttonOpenPopupAdd.addEventListener("click", openPopupAdd);
-buttonClosePopupAdd.addEventListener("click", closePopupAdd);
+buttonClosePopupAdd.addEventListener("click", () => closePopup(popupAdd));
 
 const getElement = (element) => {
   const elementTemplate = template.content.cloneNode(true);
-  const elementTemplateImage = elementTemplate.querySelector(
-    ".elements__image"
-  );
+  const elementTemplateImage = elementTemplate.querySelector(".elements__image");
 
   elementTemplate.querySelector(".elements__text").innerText = element.name;
   elementTemplateImage.setAttribute("src", element.link);
@@ -135,8 +145,9 @@ const getElement = (element) => {
   });
 
   const handlePopupImages = () => {
-    popupImage.classList.toggle("popup-images_opened");
+    popupImage.classList.toggle("popup_opened");
     popupImagesItem.setAttribute("src", element.link);
+    popupImagesItem.setAttribute("alt", element.name);
     popupImagesText.innerText = element.name;
 
     escapePopupImage();
@@ -158,18 +169,18 @@ const addElementList = (evt) => {
   evt.preventDefault();
   const stack = getElement({ name: stackName.value, link: stackLink.value });
   elementsList.prepend(stack);
-  closePopupAdd();
+  closePopup(popupAdd);
 };
 
 formElementAdd.addEventListener("submit", addElementList);
 
 renderList();
 
-const closePopupImage = () => {
-  popupImage.classList.toggle("popup-images_opened");
-};
+// const closePopupImage = () => {
+//   popupImage.classList.toggle("popup_opened");
+// };
 
-buttonClosePopupImage.addEventListener("click", closePopupImage);
+buttonClosePopupImage.addEventListener("click", () => closePopup(popupImage));
 
 const escapePopupProfile = () => {
   document.addEventListener("keydown", function (evt) {
@@ -182,7 +193,7 @@ const escapePopupProfile = () => {
 const escapePopupAdd = () => {
   document.addEventListener("keydown", function (evt) {
     if (evt.key === "Escape") {
-      popupAdd.classList.remove("popup-add_opened");
+      popupAdd.classList.remove("popup_opened");
     }
   });
 };
@@ -190,7 +201,7 @@ const escapePopupAdd = () => {
 const escapePopupImage = () => {
   document.addEventListener("keydown", function (evt) {
     if (evt.key === "Escape") {
-      popupImage.classList.remove("popup-images_opened");
+      popupImage.classList.remove("popup_opened");
     }
   });
 };
@@ -205,16 +216,16 @@ const clickedPopupProfile = () => {
 
 const clickedPopupAdd = () => {
   popupAdd.addEventListener("click", function (evt) {
-    if (evt.target.classList.contains("popup-add_opened")) {
-      return evt.target.classList.toggle("popup-add_opened");
+    if (evt.target.classList.contains("popup_opened")) {
+      return evt.target.classList.toggle("popup_opened");
     }
   });
 };
 
 const clickedPopupImage = () => {
   popupImage.addEventListener("click", function (evt) {
-    if (evt.target.classList.contains("popup-images_opened")) {
-      return evt.target.classList.toggle("popup-images_opened");
+    if (evt.target.classList.contains("popup_opened")) {
+      return evt.target.classList.toggle("popup_opened");
     }
   });
 };
