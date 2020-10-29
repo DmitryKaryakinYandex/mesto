@@ -10,9 +10,11 @@ const profileErrorName = profilePopup.querySelector("#name-card-error");
 const profileErrorJob = profilePopup.querySelector("#job-card-error");
 const profileErrorButton = profilePopup.querySelector(".popup-profile__button-submit");
 
-const closePopup = (popupBlock) => {
-  popupBlock.classList.remove("popup_opened");
-  /* код удаления обработчика Esc */
+
+const closePopup = (popup) => {
+  popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closePopupByEsc);
+  document.removeEventListener("click", closePopupByOverlay);
 };
 
 // const closePopupS = () => {
@@ -26,8 +28,21 @@ const closePopup = (popupBlock) => {
 
 // () => someFunk(param)
 
-const openPopup = () => {
-  profilePopup.classList.toggle("popup_opened");
+const openPopup = (popup) => {
+  popup.classList.add("popup_opened");
+
+  /* код добавления обработчика Esc */
+  document.addEventListener("keydown", closePopupByEsc);
+  document.addEventListener("click", closePopupByOverlay);
+}; 
+
+
+
+
+const handlePopupProfile = () => {
+  // profilePopup.classList.toggle("popup_opened");
+  openPopup(profilePopup);
+
   nameInput.value = nameReadet.textContent;
   jobInput.value = jobReadet.textContent;
 
@@ -37,12 +52,13 @@ const openPopup = () => {
   profileErrorButton.removeAttribute("disabled");
   profileErrorButton.classList.remove("popup-input__button_disabled");
 
-  escapePopupProfile();
 
-  clickedPopupProfile();
+  // escapePopupProfile();
+  
+  // clickedPopupProfile();
 };
 
-buttonOpenPopup.addEventListener("click", openPopup);
+buttonOpenPopup.addEventListener("click", handlePopupProfile);
 buttonClosePopup.addEventListener("click", () => closePopup(profilePopup));
 
 function handleFormSubmit(evt) {
@@ -107,8 +123,12 @@ const placeErrorButton = popupAdd.querySelector(".popup-add__button-submit");
 //   popupAdd.classList.toggle("popup_opened");
 // };
 
-const openPopupAdd = () => {
-  popupAdd.classList.toggle("popup_opened");
+
+
+const handlePopupAdd = () => {
+  // popupAdd.classList.toggle("popup_opened");
+  openPopup(popupAdd);
+
   stackName.value = "";
   stackLink.value = "";
 
@@ -118,12 +138,12 @@ const openPopupAdd = () => {
   placeErrorButton.setAttribute("disabled", true);
   placeErrorButton.classList.add("popup-input__button_disabled");
 
-  escapePopupAdd();
+  // escapePopupAdd();
 
-  clickedPopupAdd();
+  // clickedPopupAdd();
 };
 
-buttonOpenPopupAdd.addEventListener("click", openPopupAdd);
+buttonOpenPopupAdd.addEventListener("click", handlePopupAdd);
 buttonClosePopupAdd.addEventListener("click", () => closePopup(popupAdd));
 
 const getElement = (element) => {
@@ -145,14 +165,16 @@ const getElement = (element) => {
   });
 
   const handlePopupImages = () => {
-    popupImage.classList.toggle("popup_opened");
+    // popupImage.classList.toggle("popup_opened");
+    openPopup(popupImage);
+
     popupImagesItem.setAttribute("src", element.link);
     popupImagesItem.setAttribute("alt", element.name);
     popupImagesText.innerText = element.name;
 
-    escapePopupImage();
+    // escapePopupImage();
 
-    clickedPopupImage();
+    // clickedPopupImage();
   };
 
   elementTemplateImage.addEventListener("click", handlePopupImages);
@@ -182,53 +204,53 @@ renderList();
 
 buttonClosePopupImage.addEventListener("click", () => closePopup(popupImage));
 
-const escapePopupProfile = () => {
-  document.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
-      profilePopup.classList.remove("popup_opened");
-    }
-  });
-};
+// const escapePopupProfile = () => {
+//   document.addEventListener("keydown", function (evt) {
+//     if (evt.key === "Escape") {
+//       profilePopup.classList.remove("popup_opened");
+//     }
+//   });
+// };
 
-const escapePopupAdd = () => {
-  document.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
-      popupAdd.classList.remove("popup_opened");
-    }
-  });
-};
+// const escapePopupAdd = () => {
+//   document.addEventListener("keydown", function (evt) {
+//     if (evt.key === "Escape") {
+//       popupAdd.classList.remove("popup_opened");
+//     }
+//   });
+// };
 
-const escapePopupImage = () => {
-  document.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
-      popupImage.classList.remove("popup_opened");
-    }
-  });
-};
+// const escapePopupImage = () => {
+//   document.addEventListener("keydown", function (evt) {
+//     if (evt.key === "Escape") {
+//       popupImage.classList.remove("popup_opened");
+//     }
+//   });
+// };
 
-const clickedPopupProfile = () => {
-  profilePopup.addEventListener("click", function (evt) {
-    if (evt.target.classList.contains("popup_opened")) {
-      return evt.target.classList.toggle("popup_opened");
-    }
-  });
-};
+// const clickedPopupProfile = () => {
+//   profilePopup.addEventListener("click", function (evt) {
+//     if (evt.target.classList.contains("popup_opened")) {
+//       return evt.target.classList.toggle("popup_opened");
+//     }
+//   });
+// };
 
-const clickedPopupAdd = () => {
-  popupAdd.addEventListener("click", function (evt) {
-    if (evt.target.classList.contains("popup_opened")) {
-      return evt.target.classList.toggle("popup_opened");
-    }
-  });
-};
+// const clickedPopupAdd = () => {
+//   popupAdd.addEventListener("click", function (evt) {
+//     if (evt.target.classList.contains("popup_opened")) {
+//       return evt.target.classList.toggle("popup_opened");
+//     }
+//   });
+// };
 
-const clickedPopupImage = () => {
-  popupImage.addEventListener("click", function (evt) {
-    if (evt.target.classList.contains("popup_opened")) {
-      return evt.target.classList.toggle("popup_opened");
-    }
-  });
-};
+// const clickedPopupImage = () => {
+//   popupImage.addEventListener("click", function (evt) {
+//     if (evt.target.classList.contains("popup_opened")) {
+//       return evt.target.classList.toggle("popup_opened");
+//     }
+//   });
+// };
 
 const eraseError = (itemError, itemInpit) => {
   itemError.textContent = "";
@@ -236,3 +258,33 @@ const eraseError = (itemError, itemInpit) => {
 };
 
 
+
+////////////функция закрыти на esc универсальная
+const closePopupByEsc = (evt) => {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
+} 
+
+
+
+///////////оверлей универсальный 
+const closePopupByOverlay = (evt) => {
+  if (evt.target.classList.contains("popup_opened")) {
+   const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
+}
+
+// const escapePopupImage = () => {
+  //   document.addEventListener("keydown", function (evt) {
+  //     if (evt.key === "Escape") {
+  //       popupImage.classList.remove("popup_opened");
+  //     }
+  //   });
+  // };
+
+  // document.addEventListener("keydown", closePopupByEsc);
+
+ 
