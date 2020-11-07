@@ -86,7 +86,7 @@ const elementsList = document.querySelector(".elements");
 const formElementAdd = document.querySelector(".popup-add__container");
 const stackName = document.querySelector(".popup-add__text_type_name");
 const stackLink = document.querySelector(".popup-add__text_type_link");
-const template = document.querySelector(".template");
+// const template = document.querySelector(".template");
 const popupImage = document.querySelector(".popup-images");
 const buttonClosePopupImage = document.querySelector(".popup-images__close");
 const popupImagesItem = document.querySelector(".popop-images__item");
@@ -115,51 +115,55 @@ buttonOpenPopupAdd.addEventListener("click", handlePopupAdd);
 buttonClosePopupAdd.addEventListener("click", () => closePopup(popupAdd));
 
 const getElement = (element) => {
-  const elementTemplate = template.content.cloneNode(true);
-  const elementTemplateImage = elementTemplate.querySelector(".elements__image");
+  const listItem = new  Card(element.name,element.link,".template");
+  listItem.render(elementsList);
+  // const elementTemplate = template.content.cloneNode(true);
+  // const elementTemplateImage = elementTemplate.querySelector(".elements__image");
 
-  elementTemplate.querySelector(".elements__text").innerText = element.name;
-  elementTemplateImage.setAttribute("src", element.link);
-  elementTemplateImage.setAttribute("alt", element.name);
+  // elementTemplate.querySelector(".elements__text").innerText = element.name;
+  // elementTemplateImage.setAttribute("src", element.link);
+  // elementTemplateImage.setAttribute("alt", element.name);
 
-  const buttonTouchLike = elementTemplate.querySelector(".elements__like");
-  buttonTouchLike.addEventListener("click", function (evt) {
-    evt.target.classList.toggle("elements__like_active");
-  });
+  // const buttonTouchLike = elementTemplate.querySelector(".elements__like");
+  // buttonTouchLike.addEventListener("click", function (evt) {
+  //   evt.target.classList.toggle("elements__like_active");
+  // });
 
-  const buttonRemove = elementTemplate.querySelector(".elements__remove");
-  buttonRemove.addEventListener("click", function removeElementList(evt) {
-    evt.target.closest(".elements__element").remove();
-  });
+  // const buttonRemove = elementTemplate.querySelector(".elements__remove");
+  // buttonRemove.addEventListener("click", function removeElementList(evt) {
+  //   evt.target.closest(".elements__element").remove();
+  // });
 
-  const handlePopupImages = () => {
-    openPopup(popupImage);
+  // const handlePopupImages = () => {
+  //   openPopup(popupImage);
 
-    popupImagesItem.setAttribute("src", element.link);
-    popupImagesItem.setAttribute("alt", element.name);
-    popupImagesText.innerText = element.name;
-  };
+  //   popupImagesItem.setAttribute("src", element.link);
+  //   popupImagesItem.setAttribute("alt", element.name);
+  //   popupImagesText.innerText = element.name;
+  // };
 
-  elementTemplateImage.addEventListener("click", handlePopupImages);
+  // elementTemplateImage.addEventListener("click", handlePopupImages);
 
-  return elementTemplate;
+  // return elementTemplate;
 };
 
-const renderList = () => {
-  const items = initialCards.map(getElement);
-  elementsList.append(...items);
-};
+  //////////////////&&&&&
+
+// const renderList = () => {
+//   const items = initialCards.map(getElement);
+//   elementsList.append(...items);                     
+// };
 
 const addElementList = (evt) => {
   evt.preventDefault();
   const stack = getElement({ name: stackName.value, link: stackLink.value });
-  elementsList.prepend(stack);
+  // elementsList.prepend(stack);
   closePopup(popupAdd);
 };
 
 formElementAdd.addEventListener("submit", addElementList);
 
-renderList();
+// renderList();
 
 buttonClosePopupImage.addEventListener("click", () => closePopup(popupImage));
 
@@ -181,3 +185,17 @@ const closePopupByOverlay = (evt) => {
     closePopup(openedPopup);
   }
 };
+
+
+
+
+
+
+
+
+//////////////////////////7777777777
+
+import {Card} from './Card.js';
+
+initialCards.forEach(getElement);
+
