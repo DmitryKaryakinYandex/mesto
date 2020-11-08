@@ -18,7 +18,7 @@ const closePopup = (popup) => {
   document.removeEventListener("click", closePopupByOverlay);
 };
 
-const openPopup = (popup) => {
+export const openPopup = (popup) => {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", closePopupByEsc);
   document.addEventListener("click", closePopupByOverlay);
@@ -87,10 +87,13 @@ const formElementAdd = document.querySelector(".popup-add__container");
 const stackName = document.querySelector(".popup-add__text_type_name");
 const stackLink = document.querySelector(".popup-add__text_type_link");
 // const template = document.querySelector(".template");
-const popupImage = document.querySelector(".popup-images");
+
+
+
+export const popupImage = document.querySelector(".popup-images");
 const buttonClosePopupImage = document.querySelector(".popup-images__close");
-const popupImagesItem = document.querySelector(".popop-images__item");
-const popupImagesText = document.querySelector(".popop-images__text");
+export const popupImagesItem = document.querySelector(".popop-images__item");
+export const popupImagesText = document.querySelector(".popop-images__text");
 const buttonOpenPopupAdd = document.querySelector(".profile__add-button");
 const buttonClosePopupAdd = document.querySelector(".popup-add__close");
 const popupAdd = document.querySelector(".popup-add");
@@ -117,13 +120,16 @@ buttonClosePopupAdd.addEventListener("click", () => closePopup(popupAdd));
 const getElement = (element) => {
   const listItem = new  Card(element.name,element.link,".template");
   listItem.render(elementsList);
+  
   // const elementTemplate = template.content.cloneNode(true);
   // const elementTemplateImage = elementTemplate.querySelector(".elements__image");
+ 
+
+
 
   // elementTemplate.querySelector(".elements__text").innerText = element.name;
   // elementTemplateImage.setAttribute("src", element.link);
   // elementTemplateImage.setAttribute("alt", element.name);
-
   // const buttonTouchLike = elementTemplate.querySelector(".elements__like");
   // buttonTouchLike.addEventListener("click", function (evt) {
   //   evt.target.classList.toggle("elements__like_active");
@@ -136,14 +142,17 @@ const getElement = (element) => {
 
   // const handlePopupImages = () => {
   //   openPopup(popupImage);
+  //   console.log(popupImage);
 
-  //   popupImagesItem.setAttribute("src", element.link);
-  //   popupImagesItem.setAttribute("alt", element.name);
-  //   popupImagesText.innerText = element.name;
+    // popupImagesItem.setAttribute("src", element.link);
+    // popupImagesItem.setAttribute("alt", element.name);
+    // popupImagesText.innerText = element.name;
+  
   // };
 
   // elementTemplateImage.addEventListener("click", handlePopupImages);
 
+ 
   // return elementTemplate;
 };
 
@@ -196,6 +205,8 @@ const closePopupByOverlay = (evt) => {
 //////////////////////////7777777777
 
 import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js';
 
 initialCards.forEach(getElement);
+
 

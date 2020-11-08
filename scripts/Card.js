@@ -1,7 +1,7 @@
 export class Card {
-  constructor(elementsCardname, elementsCardlink, templateSelector) {   ////elementsCard,
-    this._elementsCardname = elementsCardname;
-    this._elementsCardlink = elementsCardlink;
+  constructor(elementsCardName, elementsCardLink, templateSelector) {   
+    this._elementsCardName = elementsCardName;
+    this._elementsCardLink = elementsCardLink;
     this._template = document.querySelector(templateSelector);
   }
 
@@ -9,9 +9,9 @@ export class Card {
     this._elementTemplate = this._template.content.cloneNode(true);
     this._elementTemplateImage = this._elementTemplate.querySelector(".elements__image");
 
-    this._elementTemplate.querySelector(".elements__text").innerText = this._elementsCardname;
-    this._elementTemplateImage.setAttribute("src", this._elementsCardlink);
-    this._elementTemplateImage.setAttribute("alt", this._elementsCardname);
+    this._elementTemplate.querySelector(".elements__text").innerText = this._elementsCardName;
+    this._elementTemplateImage.setAttribute("src", this._elementsCardLink);
+    this._elementTemplateImage.setAttribute("alt", this._elementsCardName);
 
 
     this._buttonTouchLike = this._elementTemplate.querySelector(".elements__like");
@@ -20,12 +20,24 @@ export class Card {
       });
 
     
-  this._buttonRemove = this._elementTemplate.querySelector(".elements__remove");
-  this._buttonRemove.addEventListener("click", function removeElementList(evt) {
-    evt.target.closest(".elements__element").remove();
-  });
+    this._buttonRemove = this._elementTemplate.querySelector(".elements__remove");
+    this._buttonRemove.addEventListener("click", function removeElementList(evt) {
+      evt.target.closest(".elements__element").remove();
+    });
 
-    elementsListCard.prepend(this._elementTemplate);                   /////////////elementsList??
+
+    this._elementTemplateImage.addEventListener("click", () => this._handlePopupImages());
+
+
+    elementsListCard.prepend(this._elementTemplate);                  
+  }
+
+  _handlePopupImages() {
+    openPopup(popupImage);
+
+    popupImagesItem.setAttribute("src", this._elementsCardLink);
+    popupImagesItem.setAttribute("alt", this._elementsCardName);
+    popupImagesText.innerText = this._elementsCardName;
   }
 
 }
@@ -50,27 +62,5 @@ export class Card {
   // };
 
   // elementTemplateImage.addEventListener("click", handlePopupImages);
-
-
-
-
-// export class Card {
-//     constructor(elementsCard, templateSelector) {  
-//       this._elementsCard.name = elementsCardname;
-//       this._elementsCard.link = elementsCardlink;
-//       this._template = document.querySelector(templateSelector);
-//     }
-  
-//     render(elementsListCard) {
-//       this._elementTemplate = this._template.content.cloneNode(true);
-//       this._elementTemplateImage = this._elementTemplate.querySelector(".elements__image");
-  
-//       this._elementTemplate.querySelector(".elements__text").innerText = this._elementsCard.name;
-//       this._elementTemplateImage.setAttribute("src", this._elementsCard.link);
-//       this._elementTemplateImage.setAttribute("alt", this._elementsCard.name);
-  
-//       elementsListCard.append(this._elementTemplate);                  
-//     }
-  
-//   }
     
+import {openPopup, popupImage, popupImagesItem, popupImagesText} from './index.js';
