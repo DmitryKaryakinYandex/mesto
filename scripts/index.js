@@ -121,6 +121,7 @@ const getElement = (element) => {
   const listItem = new  Card(element.name,element.link,".template");
   listItem.render(elementsList);
   
+  
   // const elementTemplate = template.content.cloneNode(true);
   // const elementTemplateImage = elementTemplate.querySelector(".elements__image");
  
@@ -142,17 +143,16 @@ const getElement = (element) => {
 
   // const handlePopupImages = () => {
   //   openPopup(popupImage);
-  //   console.log(popupImage);
+   
 
-    // popupImagesItem.setAttribute("src", element.link);
-    // popupImagesItem.setAttribute("alt", element.name);
-    // popupImagesText.innerText = element.name;
+  //   popupImagesItem.setAttribute("src", element.link);
+  //   popupImagesItem.setAttribute("alt", element.name);
+  //   popupImagesText.innerText = element.name;
   
   // };
 
-  // elementTemplateImage.addEventListener("click", handlePopupImages);
-
- 
+  // listItem.elementImage.addEventListener("click", handlePopupImages);
+  
   // return elementTemplate;
 };
 
@@ -209,4 +209,17 @@ import {FormValidator} from './FormValidator.js';
 
 initialCards.forEach(getElement);
 
+//////////////////////////////////////////
+const obj = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup-input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup-input__button_disabled",
+  inputErrorClass: "popup-input_type_error",
+};
 
+const formValid1 = new  FormValidator(obj,".popup-profile__container");
+formValid1.enableValidation();
+
+const formValid2 = new  FormValidator(obj,".popup-add__container");
+formValid2.enableValidation();

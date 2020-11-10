@@ -25,7 +25,6 @@ export class Card {
       evt.target.closest(".elements__element").remove();
     });
 
-
     this._elementTemplateImage.addEventListener("click", () => this._handlePopupImages());
 
 
