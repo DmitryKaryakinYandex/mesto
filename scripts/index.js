@@ -18,7 +18,7 @@ const closePopup = (popup) => {
   document.removeEventListener("click", closePopupByOverlay);
 };
 
-export const openPopup = (popup) => {
+const openPopup = (popup) => {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", closePopupByEsc);
   document.addEventListener("click", closePopupByOverlay);
@@ -86,14 +86,11 @@ const elementsList = document.querySelector(".elements");
 const formElementAdd = document.querySelector(".popup-add__container");
 const stackName = document.querySelector(".popup-add__text_type_name");
 const stackLink = document.querySelector(".popup-add__text_type_link");
-// const template = document.querySelector(".template");
 
-
-
-export const popupImage = document.querySelector(".popup-images");
+const popupImage = document.querySelector(".popup-images");
 const buttonClosePopupImage = document.querySelector(".popup-images__close");
-export const popupImagesItem = document.querySelector(".popop-images__item");
-export const popupImagesText = document.querySelector(".popop-images__text");
+const popupImagesItem = document.querySelector(".popop-images__item");
+const popupImagesText = document.querySelector(".popop-images__text");
 const buttonOpenPopupAdd = document.querySelector(".profile__add-button");
 const buttonClosePopupAdd = document.querySelector(".popup-add__close");
 const popupAdd = document.querySelector(".popup-add");
@@ -118,61 +115,30 @@ buttonOpenPopupAdd.addEventListener("click", handlePopupAdd);
 buttonClosePopupAdd.addEventListener("click", () => closePopup(popupAdd));
 
 const getElement = (element) => {
-  const listItem = new  Card(element.name,element.link,".template");
+  let handlePopupImages = () => {
+    openPopup(popupImage);
+
+    popupImagesItem.setAttribute("src", element.link);
+    popupImagesItem.setAttribute("alt", element.name);
+    popupImagesText.innerText = element.name;
+  };
+
+  const listItem = new Card(
+    element.name,
+    element.link,
+    ".template",
+    handlePopupImages
+  );
   listItem.render(elementsList);
-  
-  
-  // const elementTemplate = template.content.cloneNode(true);
-  // const elementTemplateImage = elementTemplate.querySelector(".elements__image");
- 
-
-
-
-  // elementTemplate.querySelector(".elements__text").innerText = element.name;
-  // elementTemplateImage.setAttribute("src", element.link);
-  // elementTemplateImage.setAttribute("alt", element.name);
-  // const buttonTouchLike = elementTemplate.querySelector(".elements__like");
-  // buttonTouchLike.addEventListener("click", function (evt) {
-  //   evt.target.classList.toggle("elements__like_active");
-  // });
-
-  // const buttonRemove = elementTemplate.querySelector(".elements__remove");
-  // buttonRemove.addEventListener("click", function removeElementList(evt) {
-  //   evt.target.closest(".elements__element").remove();
-  // });
-
-  // const handlePopupImages = () => {
-  //   openPopup(popupImage);
-   
-
-  //   popupImagesItem.setAttribute("src", element.link);
-  //   popupImagesItem.setAttribute("alt", element.name);
-  //   popupImagesText.innerText = element.name;
-  
-  // };
-
-  // listItem.elementImage.addEventListener("click", handlePopupImages);
-  
-  // return elementTemplate;
 };
-
-  //////////////////&&&&&
-
-// const renderList = () => {
-//   const items = initialCards.map(getElement);
-//   elementsList.append(...items);                     
-// };
 
 const addElementList = (evt) => {
   evt.preventDefault();
   const stack = getElement({ name: stackName.value, link: stackLink.value });
-  // elementsList.prepend(stack);
   closePopup(popupAdd);
 };
 
 formElementAdd.addEventListener("submit", addElementList);
-
-// renderList();
 
 buttonClosePopupImage.addEventListener("click", () => closePopup(popupImage));
 
@@ -195,21 +161,11 @@ const closePopupByOverlay = (evt) => {
   }
 };
 
-
-
-
-
-
-
-
-//////////////////////////7777777777
-
-import {Card} from './Card.js';
-import {FormValidator} from './FormValidator.js';
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
 
 initialCards.forEach(getElement);
 
-//////////////////////////////////////////
 const obj = {
   formSelector: ".popup__form",
   inputSelector: ".popup-input",
@@ -218,8 +174,8 @@ const obj = {
   inputErrorClass: "popup-input_type_error",
 };
 
-const formValid1 = new  FormValidator(obj,".popup-profile__container");
+const formValid1 = new FormValidator(obj, ".popup-profile__container");
 formValid1.enableValidation();
 
-const formValid2 = new  FormValidator(obj,".popup-add__container");
+const formValid2 = new FormValidator(obj, ".popup-add__container");
 formValid2.enableValidation();
