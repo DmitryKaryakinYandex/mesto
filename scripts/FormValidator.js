@@ -5,7 +5,6 @@ export class FormValidator {
   }
 
   enableValidation() {
-    console.log(this._formItem);
     this._form = document.querySelector(this._formItem);
 
     this._form.addEventListener("submit", (evt) => {
@@ -25,7 +24,6 @@ export class FormValidator {
 
     this.inputElements.forEach((input) => {
       input.addEventListener("input", (evt) => {
-        console.log(formElement);
         this._checkInputValidity(formElement, evt.target);
         this._toggleButttonState(
           formElement,
