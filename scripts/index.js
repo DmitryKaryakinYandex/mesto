@@ -3,8 +3,8 @@ const buttonClosePopup = document.querySelector(".popup-profile__close");
 const profilePopup = document.querySelector(".popup-profile");
 const nameInput = profilePopup.querySelector(".popup-profile__text_type_name");
 const jobInput = profilePopup.querySelector(".popup-profile__text_type_job");
-const nameReadet = document.querySelector(".profile__title");
-const jobReadet = document.querySelector(".profile__subtitle");
+const name = document.querySelector(".profile__title");
+const job = document.querySelector(".profile__subtitle");
 const formElement = profilePopup.querySelector(".popup-profile__container");
 const profileErrorName = profilePopup.querySelector("#name-card-error");
 const profileErrorJob = profilePopup.querySelector("#job-card-error");
@@ -27,8 +27,8 @@ const openPopup = (popup) => {
 const handlePopupProfile = () => {
   openPopup(profilePopup);
 
-  nameInput.value = nameReadet.textContent;
-  jobInput.value = jobReadet.textContent;
+  nameInput.value = name.textContent;
+  jobInput.value = job.textContent;
 
   eraseError(profileErrorName, nameInput);
   eraseError(profileErrorJob, jobInput);
@@ -42,8 +42,8 @@ buttonClosePopup.addEventListener("click", () => closePopup(profilePopup));
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
-  nameReadet.textContent = nameInput.value;
-  jobReadet.textContent = jobInput.value;
+  name.textContent = nameInput.value;
+  job.textContent = jobInput.value;
   closePopup(profilePopup);
 }
 
@@ -84,8 +84,8 @@ const initialCards = [
 
 const elementsList = document.querySelector(".elements");
 const formElementAdd = document.querySelector(".popup-add__container");
-const stackName = document.querySelector(".popup-add__text_type_name");
-const stackLink = document.querySelector(".popup-add__text_type_link");
+const placeName = document.querySelector(".popup-add__text_type_name");
+const placeLink = document.querySelector(".popup-add__text_type_link");
 
 const popupImage = document.querySelector(".popup-images");
 const buttonClosePopupImage = document.querySelector(".popup-images__close");
@@ -101,11 +101,11 @@ const placeErrorButton = popupAdd.querySelector(".popup-add__button-submit");
 const handlePopupAdd = () => {
   openPopup(popupAdd);
 
-  stackName.value = "";
-  stackLink.value = "";
+  placeName.value = "";
+  placeLink.value = "";
 
-  eraseError(placeErrorName, stackName);
-  eraseError(placeErrorLink, stackLink);
+  eraseError(placeErrorName, placeName);
+  eraseError(placeErrorLink, placeLink);
 
   placeErrorButton.setAttribute("disabled", true);
   placeErrorButton.classList.add("popup-input__button_disabled");
@@ -134,7 +134,8 @@ const getElement = (element) => {
 
 const addElementList = (evt) => {
   evt.preventDefault();
-  const stack = getElement({ name: stackName.value, link: stackLink.value });
+  const card = getElement({ name: placeName.value, link: placeLink.value });
+  // elementsList.prepend(card);
   closePopup(popupAdd);
 };
 
