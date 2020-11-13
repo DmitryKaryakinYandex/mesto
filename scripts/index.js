@@ -6,7 +6,7 @@ const jobInput = profilePopup.querySelector(".popup-profile__text_type_job");
 const name = document.querySelector(".profile__title");
 const job = document.querySelector(".profile__subtitle");
 const formElement = profilePopup.querySelector(".popup-profile__container");
-const profileErrorName = profilePopup.querySelector("#name-card-error");
+const profileErrorName = profilePopup.querySelector("#name-card-error");        ///////////////
 const profileErrorJob = profilePopup.querySelector("#job-card-error");
 const profileErrorButton = profilePopup.querySelector(
   ".popup-profile__button-submit"
@@ -30,8 +30,9 @@ const handlePopupProfile = () => {
   nameInput.value = name.textContent;
   jobInput.value = job.textContent;
 
-  eraseError(profileErrorName, nameInput);
-  eraseError(profileErrorJob, jobInput);
+  // eraseError(profileErrorName, nameInput);
+  // eraseError(profileErrorJob, jobInput);
+  formValid1.eraseErrors();
 
   profileErrorButton.removeAttribute("disabled");
   profileErrorButton.classList.remove("popup-input__button_disabled");
@@ -104,8 +105,9 @@ const handlePopupAdd = () => {
   placeName.value = "";
   placeLink.value = "";
 
-  eraseError(placeErrorName, placeName);
-  eraseError(placeErrorLink, placeLink);
+  // eraseError(placeErrorName, placeName);
+  // eraseError(placeErrorLink, placeLink);
+  formValid2.eraseErrors();
 
   placeErrorButton.setAttribute("disabled", true);
   placeErrorButton.classList.add("popup-input__button_disabled");
@@ -114,14 +116,15 @@ const handlePopupAdd = () => {
 buttonOpenPopupAdd.addEventListener("click", handlePopupAdd);
 buttonClosePopupAdd.addEventListener("click", () => closePopup(popupAdd));
 
-const getElement = (element) => {
-  let handlePopupImages = () => {
-    openPopup(popupImage);
 
-    popupImagesItem.setAttribute("src", element.link);
-    popupImagesItem.setAttribute("alt", element.name);
-    popupImagesText.innerText = element.name;
-  };
+const getElement = (element) => {
+  // let handlePopupImages = () => {
+  //   openPopup(popupImage);
+
+  //   popupImagesItem.setAttribute("src", element.link);
+  //   popupImagesItem.setAttribute("alt", element.name);
+  //   popupImagesText.innerText = element.name;
+  // };
 
   const listItem = new Card(
     element.name,
@@ -129,13 +132,32 @@ const getElement = (element) => {
     ".template",
     handlePopupImages
   );
-  listItem.render(elementsList);
+ 
+  // const card = listItem.getView();
+  const card = listItem.getView();
+  return card;
+
 };
+
+let handlePopupImages = (element) => {
+  openPopup(popupImage);
+  
+  popupImagesItem.setAttribute("src", element.link);
+  popupImagesItem.setAttribute("alt", element.name);
+  popupImagesText.innerText = element.name;
+};
+
+const renderList = () => {
+  const items = initialCards.map(getElement);
+  elementsList.append(...items);
+};
+
+renderList();
 
 const addElementList = (evt) => {
   evt.preventDefault();
   const card = getElement({ name: placeName.value, link: placeLink.value });
-  // elementsList.prepend(card);
+  elementsList.prepend(card);
   closePopup(popupAdd);
 };
 
@@ -143,10 +165,17 @@ formElementAdd.addEventListener("submit", addElementList);
 
 buttonClosePopupImage.addEventListener("click", () => closePopup(popupImage));
 
-const eraseError = (itemError, itemInpit) => {
-  itemError.textContent = "";
-  itemInpit.classList.remove("popup-input_type_error");
-};
+
+
+
+// const eraseError = (itemError, itemInpit) => {
+//   itemError.textContent = "";
+//   itemInpit.classList.remove("popup-input_type_error");
+// };
+
+
+
+
 
 const closePopupByEsc = (evt) => {
   if (evt.key === "Escape") {

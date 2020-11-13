@@ -66,4 +66,23 @@ export class FormValidator {
     this.errorElement.textContent = "";
     input.classList.remove(this._params.inputErrorClass);
   }
+
+  eraseErrors() {
+    this._inputElements.forEach((input) => {
+      this.errorElement = this._form.querySelector(`#${input.id}-error`);           
+      this.errorElement.textContent = "";
+      input.classList.remove("popup-input_type_error");
+    });
+
+    
+   }
+
+  
 }
+
+
+
+// const eraseError = (itemError, itemInpit) => {
+//   itemError.textContent = "";
+//   itemInpit.classList.remove("popup-input_type_error");
+// };
