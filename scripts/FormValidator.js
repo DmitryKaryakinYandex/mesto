@@ -13,8 +13,6 @@ export class FormValidator {
     this._setEventListeners();
   }
   _setEventListeners() {
-    
-
     this._inputElements.forEach((input) => {
       input.addEventListener("input", (evt) => {
         this._checkInputValidity(evt.target);             
