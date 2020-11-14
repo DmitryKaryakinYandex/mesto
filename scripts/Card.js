@@ -7,117 +7,47 @@ export class Card {
   ) {
     this._сardName = сardName;
     this._сardLink = сardLink;
-    this._template = document.querySelector(templateSelector);
+    this._template = templateSelector;
     this.handlePopupImagess = handlePopupImagess;
   }
 
+    _getTemplate() {
+      const _card = document.querySelector(this._template).content.cloneNode(true);
 
-//   _setEventListeners
-// _getTemplate
-// _handleLike
-// _handleDeleteCard
-// getView
-  
+      return _card;
+    }
+
     getView() {
-    this._elementTemplate = this._template.content.cloneNode(true);
-    this._elementTemplateImage = this._elementTemplate.querySelector(
-      ".elements__image"
-    );
+      this._element = this._getTemplate();
 
+      this._element.querySelector(".elements__image").setAttribute("src", this._сardLink);
+      this._element.querySelector(".elements__image").setAttribute("alt", this._сardName);
+      this._element.querySelector(".elements__text").innerText = this._сardName;
 
-    this._elementTemplate.querySelector(
-      ".elements__text"
-    ).innerText = this._сardName;
-    this._elementTemplateImage.setAttribute("src", this._сardLink);
-    this._elementTemplateImage.setAttribute("alt", this._сardName);
+      this._setEventListeners();
+      this._handleLike();
+      this._handleDeleteCard();
 
+      return this._element;
+    }
 
+    _setEventListeners() {
+      this._element.querySelector(".elements__image").addEventListener("click", () => 
+        this.handlePopupImagess({name: this._сardName, link: this._сardLink}));
+    }
 
-    this._buttonTouchLike = this._elementTemplate.querySelector(
-      ".elements__like"
-    );
+    _handleLike() {
+    this._buttonTouchLike = this._element.querySelector(".elements__like");
     this._buttonTouchLike.addEventListener("click", function (evt) {
       evt.target.classList.toggle("elements__like_active");
     });
+  }
 
-
-
-    this._buttonRemove = this._elementTemplate.querySelector(
-      ".elements__remove"
-    );
-    this._buttonRemove.addEventListener("click", function removeElementList(
-      evt
-    ) {
+  _handleDeleteCard() {
+    this._buttonRemove = this._element.querySelector(".elements__remove");
+    this._buttonRemove.addEventListener("click", function removeElementList(evt) {
       evt.target.closest(".elements__element").remove();
     });
-
-
-
-
-    this._elementTemplateImage.addEventListener("click", () =>
-
-      this.handlePopupImagess({
-        name: this._сardName, 
-        link: this._сardLink
-      })
-
-    );
-
-    return this._elementTemplate;
   }
-}
 
-
-// getView() {
-//   this._elementTemplate = this._template.content.cloneNode(true);
-//   this._elementTemplateImage = this._elementTemplate.querySelector(
-//     ".elements__image"
-//   );
-
-//   this._elementTemplate.querySelector(
-//     ".elements__text"
-//   ).innerText = this._сardName;
-//   this._elementTemplateImage.setAttribute("src", this._сardLink);
-//   this._elementTemplateImage.setAttribute("alt", this._сardName);
-
-//   this._buttonTouchLike = this._elementTemplate.querySelector(
-//     ".elements__like"
-//   );
-//   this._buttonTouchLike.addEventListener("click", function (evt) {
-//     evt.target.classList.toggle("elements__like_active");
-//   });
-
-//   this._buttonRemove = this._elementTemplate.querySelector(
-//     ".elements__remove"
-//   );
-//   this._buttonRemove.addEventListener("click", function removeElementList(
-//     evt
-//   ) {
-//     evt.target.closest(".elements__element").remove();
-//   });
-
-//   this._elementTemplateImage.addEventListener("click", () =>
-//     this.handlePopupImagess()
-//   );
-
-  // elementsListCard.prepend(this._elementTemplate);
-
-//   return this._elementTemplate;
-// }
-
-
-
-
-
-
-
-// const getElement = (element) => {
-//   const listItem = new Card(
-//     element.name,
-//     element.link,
-//     ".template",
-//     handlePopupImages
-//   );
-//   const card = listItem.getView()
-//   return card
-// };
+  }
