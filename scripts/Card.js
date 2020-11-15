@@ -14,8 +14,9 @@ export class Card {
   getView() {
     this._element = this._getTemplate();
 
-    this._element.querySelector(".elements__image").setAttribute("src", this._сardLink);
-    this._element.querySelector(".elements__image").setAttribute("alt", this._сardName);
+    this._cardImage = this._element.querySelector(".elements__image");
+    this._cardImage.setAttribute("src", this._сardLink);
+    this._cardImage.setAttribute("alt", this._сardName);
     this._element.querySelector(".elements__text").innerText = this._сardName;
 
     this._setEventListeners();
@@ -26,7 +27,7 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._element.querySelector(".elements__image").addEventListener("click", () =>
+    this._cardImage.addEventListener("click", () =>
         this.handlePopupImagess({ name: this._сardName, link: this._сardLink })
       );
   }

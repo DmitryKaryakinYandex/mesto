@@ -25,14 +25,23 @@ export class FormValidator {
   }
 
   _toggleButttonState() {                     
-    if (this._form.checkValidity()) {                      
-      this._buttonElement.classList.remove(this._params.inactiveButtonClass);
-      this._buttonElement.removeAttribute("disabled");
+    if (this._form.checkValidity()) {   
+      this.enableButton();                   
     } else {
-      this._buttonElement.classList.add(this._params.inactiveButtonClass);
-      this._buttonElement.setAttribute("disabled", true);
+      this.disableButton();
     }
   }
+
+  enableButton() {
+    this._buttonElement.classList.remove(this._params.inactiveButtonClass);
+    this._buttonElement.removeAttribute("disabled");
+  }
+
+  disableButton() {
+    this._buttonElement.classList.add(this._params.inactiveButtonClass);
+    this._buttonElement.setAttribute("disabled", true);
+  }
+
 
   _checkInputValidity(input) {                             
     if (input.checkValidity()) {
@@ -56,9 +65,7 @@ export class FormValidator {
 
   eraseErrors() {
     this._inputElements.forEach((input) => {
-      this.errorElement = this._form.querySelector(`#${input.id}-error`);           
-      this.errorElement.textContent = "";
-      input.classList.remove("popup-input_type_error");
+      this._hideError(input);
     });
    }
 }

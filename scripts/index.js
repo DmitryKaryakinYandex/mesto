@@ -6,9 +6,6 @@ const jobInput = profilePopup.querySelector(".popup-profile__text_type_job");
 const name = document.querySelector(".profile__title");
 const job = document.querySelector(".profile__subtitle");
 const formElement = profilePopup.querySelector(".popup-profile__container");
-const profileErrorButton = profilePopup.querySelector(
-  ".popup-profile__button-submit"
-);
 
 const closePopup = (popup) => {
   popup.classList.remove("popup_opened");
@@ -28,10 +25,9 @@ const handlePopupProfile = () => {
   nameInput.value = name.textContent;
   jobInput.value = job.textContent;
 
-  formValid1.eraseErrors();
+  profileValidator.eraseErrors();
 
-  profileErrorButton.removeAttribute("disabled");
-  profileErrorButton.classList.remove("popup-input__button_disabled");
+  profileValidator.enableButton();
 };
 
 buttonOpenPopup.addEventListener("click", handlePopupProfile);
@@ -90,7 +86,6 @@ const popupImagesText = document.querySelector(".popop-images__text");
 const buttonOpenPopupAdd = document.querySelector(".profile__add-button");
 const buttonClosePopupAdd = document.querySelector(".popup-add__close");
 const popupAdd = document.querySelector(".popup-add");
-const placeErrorButton = popupAdd.querySelector(".popup-add__button-submit");
 
 const handlePopupAdd = () => {
   openPopup(popupAdd);
@@ -98,10 +93,9 @@ const handlePopupAdd = () => {
   placeName.value = "";
   placeLink.value = "";
 
-  formValid2.eraseErrors();
+  addCardValidator.eraseErrors();
 
-  placeErrorButton.setAttribute("disabled", true);
-  placeErrorButton.classList.add("popup-input__button_disabled");
+  addCardValidator.disableButton();
 };
 
 buttonOpenPopupAdd.addEventListener("click", handlePopupAdd);
@@ -174,8 +168,8 @@ const obj = {
   inputErrorClass: "popup-input_type_error",
 };
 
-const formValid1 = new FormValidator(obj, ".popup-profile__container");
-formValid1.enableValidation();
+const profileValidator = new FormValidator(obj, ".popup-profile__container");
+profileValidator.enableValidation();
 
-const formValid2 = new FormValidator(obj, ".popup-add__container");
-formValid2.enableValidation();
+const addCardValidator = new FormValidator(obj, ".popup-add__container");
+addCardValidator.enableValidation();
