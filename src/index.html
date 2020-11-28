@@ -4,16 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>mesto</title>
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="body">
   <div class="page">
     <header class="header">
-      <img class="header__logo" src="./images/header-logo.svg" alt="Логотип">
+      <img class="header__logo" src="<%=require('./images/header-logo.svg')%>" alt="Логотип">
     </header>
     <section class="profile">
       <div class="profile__wrapper-avatar-info">
-        <img class="profile__avatar" src="./images/profile-kusto.png" alt="фото Жак-Ив Кусто">
+        <img class="profile__avatar" src="<%=require('./images/profile-kusto.png')%>" alt="фото Жак-Ив Кусто">
         <div class="profile__info">
           <div class="profile__info-wrapper">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -30,7 +29,7 @@
     </footer>
     <div class="popup-profile popup">
       <form class="popup-profile__container popup__form" name="popupForm" novalidate>
-        <button class="popup-profile__close" type="button" aria-label="Закрыть"></button>
+        <button class="popup-profile__close popup__close" type="button" aria-label="Закрыть"></button>
         <div class="popup-profile__content">
           <h3 class="popup-profile__title"> Редактировать профиль </h3>
           <input type="text" id="name-card" placeholder="Укажите имя" value="Жак-Ив Кусто" class="popup-profile__text popup-profile__text_type_name popup-input" name="popupName" minlength="2" maxlength="40" required>
@@ -43,7 +42,7 @@
     </div>
     <div class="popup-add popup">
       <form class="popup-add__container popup__form" name="popupAddForm">
-        <button class="popup-add__close" type="button" aria-label="Закрыть"></button>
+        <button class="popup-add__close popup__close" type="button" aria-label="Закрыть"></button>
         <div class="popup-add__content">
           <h3 class="popup-add__title"> Новое место </h3>
           <input type="text" id="name-place" placeholder="Название" value="" class="popup-add__text popup-add__text_type_name popup-input" name="popupNamePlace" minlength="2" maxlength="30" required>
@@ -56,7 +55,7 @@
     </div>
     <div class="popup-images popup">
       <form class="popup-images__container" name="popupImagesForm">
-        <button class="popup-images__close" type="button" aria-label="Закрыть"></button>
+        <button class="popup-images__close popup__close" type="button" aria-label="Закрыть"></button>
         <img class="popop-images__item" alt="#" src="#">
         <p class="popop-images__text">#</p>
       </form>
@@ -72,6 +71,6 @@
       </div>
     </div>
   </template>  
-<script src="./scripts/index.js" type="module"></script>
+<script src="./index.js" type="module"></script>
 </body>
 </html>
