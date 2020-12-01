@@ -1,24 +1,18 @@
 export default class UserInfo {
 
-    constructor(nameProfile,jobProfile) {
-        this._nameProfile = nameProfile;
-        this._jobProfile = jobProfile;
-    }
+  constructor(dataProfile) {
+      this._dataProfile = dataProfile;
+      this._nameProfile = document.querySelector(this._dataProfile.profileTitle);
+      this._jobProfile = document.querySelector(this._dataProfile.profileSubtitle);
+  }
 
-   getUserInfo() {
-     const getNameProfile = document.querySelector(this._nameProfile).textContent;
-     const getJobProfile = document.querySelector(this._jobProfile).textContent;
-     const infoProfile = {getNameProfile,getJobProfile};
+ getUserInfo() {
+  const infoProfile = {name: this._nameProfile.textContent, job: this._jobProfile.textContent};
+  return infoProfile;
+ }
 
-     return infoProfile;
+  setUserInfo(userData) {
+    this._nameProfile.textContent = userData.name;
+    this._jobProfile.textContent = userData.job;
    }
-
-   setUserInfo(obj) {
-   const getNameProfile = document.querySelector(this._nameProfile);
-   const getJobProfile = document.querySelector(this._jobProfile);
-
-   getNameProfile.textContent = obj.name;
-   getJobProfile.textContent = obj.job;
-   }
-
 }
