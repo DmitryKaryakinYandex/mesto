@@ -8,9 +8,9 @@ import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from "../components/UserInfo.js";
-import {initialCards} from "../components/initial-сards.js";
+import {initialCards} from "../utils/initial-сards.js";
 import {validationConfig, buttonOpenPopup, profilePopup, nameInput, jobInput, elementsList, addPopup, 
-  popupImage, buttonOpenPopupAdd, popupAdd, itemProfile, popupProfileContainer, popupAddContainer} from "../utils/constants.js";
+  popupImage, buttonOpenPopupAdd, popupAdd, itemProfile, popupProfileContainer, popupAddContainer, template} from "../utils/constants.js";
 
 const popupProfile = new Popup(profilePopup);
 
@@ -72,7 +72,7 @@ function createCard(element) {
   const listItem = new Card(
     element.name,
     element.link,
-    ".template",
+    template,
     handlePopupImages
   );
   const card = listItem.getView();

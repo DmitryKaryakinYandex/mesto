@@ -17,3 +17,4 @@ export const validationConfig = {
   export const itemProfile = {profileTitle: ".profile__title", profileSubtitle: ".profile__subtitle"};
   export const popupProfileContainer = ".popup-profile__container";
   export const popupAddContainer = ".popup-add__container";
+  export const template = ".template";
