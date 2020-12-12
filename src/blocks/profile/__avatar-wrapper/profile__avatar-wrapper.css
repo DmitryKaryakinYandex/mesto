@@ -1,0 +1,11 @@
+.profile__avatar-wrapper {
+  border-radius: 50%;
+  max-width: 169px;
+  margin-right: 22.5px;
+  position:relative; 
+  display: flex;
+}
+  
+.profile__avatar-wrapper:hover .profile__avatar-button {
+  display:block;
+}

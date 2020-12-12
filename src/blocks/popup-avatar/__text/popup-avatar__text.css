@@ -1,0 +1,17 @@
+.popup-avatar__text {
+    margin-top: 5px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.21;
+    color: #000000;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0, 0.2);
+    padding-bottom: 13px;
+  }
+  
+  @media screen and (max-width: 525px) {
+    .popup-avatar__text {
+      font-size: 12px;
+    }
+  }

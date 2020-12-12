@@ -12,9 +12,25 @@ export const validationConfig = {
   export const elementsList = document.querySelector(".elements");
   export const addPopup = document.querySelector(".popup-add");
   export const popupImage = document.querySelector(".popup-images");
+  export const popupRemove = document.querySelector(".popup-remove");
   export const buttonOpenPopupAdd = document.querySelector(".profile__add-button");
   export const popupAdd = document.querySelector(".popup-add");
   export const itemProfile = {profileTitle: ".profile__title", profileSubtitle: ".profile__subtitle"};
   export const popupProfileContainer = ".popup-profile__container";
   export const popupAddContainer = ".popup-add__container";
   export const template = ".template";
+  export const avatarPopup = document.querySelector(".popup-avatar");
+  export const imagePopupAvatar = document.querySelector(".profile__avatar");
+  export const buttonOpenPopupAvatar = document.querySelector(".profile__avatar-button");
+  export const popupAvatarContainer = ".popup-avatar__container";
+  export const profileButtonSubmit = document.querySelector(".popup-profile__button-submit");
+  export const addButtonSubmit = document.querySelector(".popup-add__button-submit");
+  export const avatarButtonSubmit = document.querySelector(".popup-avatar__button-submit");
+  export const profileTitle = document.querySelector(".profile__title");
+  export const profileSubtitle = document.querySelector(".profile__subtitle");
+  export const profileImage = document.querySelector(".profile__avatar");
+  
+  
+  
+  
+ 

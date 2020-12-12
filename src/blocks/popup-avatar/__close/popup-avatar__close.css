@@ -1,0 +1,27 @@
+.popup-avatar__close {
+    min-width: 41px;
+    min-height: 41px;
+    background: transparent;
+    background-image: url(../../../images/popup__close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    position: absolute;
+    top: -35px;
+    right: -35px;
+    transition: opacity 1.2s ease;
+  }
+    
+  @media screen and (max-width: 525px) {
+    .popup-avatar__close {
+      min-width: 30px;
+      min-height: 30px;
+      top: -30px;
+      right: -30px;
+    }
+  }
+      
+  .popup-avatar__close:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
