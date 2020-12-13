@@ -5,15 +5,14 @@ import "./index.css";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import Section from '../components/Section.js';
-import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithSubmit from '../components/PopupWithSubmit.js';
 import UserInfo from "../components/UserInfo.js";
 import {validationConfig, buttonOpenPopup, profilePopup, nameInput, jobInput, elementsList, addPopup, 
-  popupImage, buttonOpenPopupAdd, popupAdd, itemProfile, popupProfileContainer, popupAddContainer, template, 
+  popupImage, buttonOpenPopupAdd, itemProfile, popupProfileContainer, popupAddContainer, template, 
   popupRemove, avatarPopup, buttonOpenPopupAvatar, imagePopupAvatar, popupAvatarContainer, profileButtonSubmit, 
-  addButtonSubmit, avatarButtonSubmit, profileTitle, profileSubtitle, profileImage} from "../utils/constants.js";
+  addButtonSubmit, avatarButtonSubmit, profileImage, popupImageText} from "../utils/constants.js";
 
   let userId = null;
 
@@ -75,8 +74,6 @@ const api = new Api({
   }
 });
 
-const popupProfile = new Popup(profilePopup);
-
 const user = new UserInfo(itemProfile);
 
 function dataUser() {
@@ -85,15 +82,13 @@ function dataUser() {
     
   userId = data._id;                                                        
 
-    profileTitle.textContent = data.name;
-    profileSubtitle.textContent = data.about;
+    user.setUserInfo({name: data.name, job: data.about});
     profileImage.src = data.avatar;
   })
   .catch((err) => { console.log(`Не удалось выполнить загрузку по причине:${err}`); });                    
 }
 
 dataUser();
-
 
 function hasIdLike (_id) {
   return itemLike => itemLike._id === _id;
@@ -148,13 +143,10 @@ let handleDeleteCard = (card) => {
   popupRemoves.open();
 };
 
-api.getCardData();
-const cards = api.getCardData();
-cards.then((res) =>{
-  
-
+function initialCards(cardNew) {
 const cardsList = new Section({
-  data: res,
+
+  data: cardNew,
   renderer: (element) => {
 
     const card = createCard(element,userId);
@@ -163,9 +155,15 @@ const cardsList = new Section({
   },
 },
 elementsList
-); 
-
+);
 cardsList.renderItems();
+}
+
+api.getCardData();
+const cards = api.getCardData();
+cards.then((res) =>{
+  res.reverse();
+  initialCards(res);
 })                                                                                                       
   .catch((err) => { console.log(`Не удалось выполнить загрузку по причине:${err}`); });                 
 
@@ -194,33 +192,10 @@ function handleFormSubmit(obj) {
   user.setUserInfo({name,job});
 renderLoading(profileButtonSubmit,true);                                                                                           
   api.setUserData({name,job})                                                               
-    .then((res) => console.log("Запрос успешно обработан"))                                              
+    .then((res) => { console.log("Запрос успешно обработан");   popupProfileForm.close(); })                                              
     .catch((err) => { console.log(`Не удалось выполнить загрузку по причине:${err}`); })          
-    .finally(() => {renderLoading(profileButtonSubmit,false);});                                                                  
-  popupProfile.close();
+    .finally(() => {renderLoading(profileButtonSubmit,false);}); 
 }
-
-const popupAddCard = new Popup(popupAdd);
-
-const handlePopupAdd = () => {
-  popupAddCard.open();
-
-  addCardValidator.eraseErrors();
-
-  addCardValidator.disableButton();
-};
-
-buttonOpenPopupAdd.addEventListener("click", handlePopupAdd);
-
-popupAddCard.setEventListeners();
-
-const popupImages = new Popup(popupImage);
-
-const popupWithImages = new PopupWithImage(popupImage);
-
-let handlePopupImages = (element) => {
-  popupWithImages.open(element);
-};
 
 const addElementList = (obj) => {
   renderLoading(addButtonSubmit,true);
@@ -230,20 +205,8 @@ const addElementList = (obj) => {
 
   const cardNew = [{ name: res.name, link: res.link, likes: res.likes, owner: res.owner, _id : res._id}]; 
 
-  const cardsAdd = new Section({
-  data: cardNew,
-  
-  renderer: (element) => {
-    
-    const card = createCard(element,userId);
-    
-    cardsAdd.setItem(card);
-  },
-},
-elementsList
-); 
-cardsAdd.renderItems(); 
- 
+  initialCards(cardNew); 
+
 popupAddForm.close(); 
 })
 
@@ -251,10 +214,27 @@ popupAddForm.close();
 .finally(() => {renderLoading(addButtonSubmit,false);});                                             
 };
 
-const popupAddForm = new PopupWithForm(addPopup,addElementList);
+const popupAddForm = new PopupWithForm(addPopup,addElementList);                               
 
-popupAddForm.setEventListeners();
-popupImages.setEventListeners();
+const handlePopupAdd = () => {
+  popupAddForm.open();
+
+  addCardValidator.eraseErrors();
+
+  addCardValidator.disableButton();
+};
+
+buttonOpenPopupAdd.addEventListener("click", handlePopupAdd);
+
+popupAddForm.setEventListeners(); 
+
+const popupWithImages = new PopupWithImage(popupImage);
+
+const  handlePopupImages = (element) => {
+  popupWithImages.open(element,popupImageText);
+};
+
+popupWithImages.setEventListeners();
 
 const profileValidator = new FormValidator(validationConfig, popupProfileContainer);
 profileValidator.enableValidation();
